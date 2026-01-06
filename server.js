@@ -4,12 +4,13 @@ const cors = require("cors");
 require("dotenv").config();
 
 const app = express();
-
 app.use(
   cors({
-    origin: "https://os-visualization.onrender.com",
+    origin: [
+      "https://os-visualization.onrender.com"
+    ],
     methods: ["GET", "POST"],
-    allowedHeaders: ["Content-Type"],
+    credentials: false
   })
 );
 
