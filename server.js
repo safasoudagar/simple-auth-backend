@@ -5,17 +5,14 @@ require("dotenv").config();
 
 const app = express();
 
-/* ===================== MIDDLEWARE ===================== */
 app.use(
   cors({
-    origin: [
-      "https://os-visualization.onrender.com",
-      "http://localhost:5500",
-      "http://127.0.0.1:5500"
-    ],
+    origin: "https://os-visualization.onrender.com",
     methods: ["GET", "POST"],
+    allowedHeaders: ["Content-Type"],
   })
 );
+
 
 app.use(express.json());
 
