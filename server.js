@@ -6,7 +6,17 @@ require("dotenv").config();
 const app = express();
 
 /* ===================== MIDDLEWARE ===================== */
-app.use(cors());                 // ⭐ REQUIRED for frontend (Render + browser)
+app.use(
+  cors({
+    origin: [
+      "https://os-visualization.onrender.com",
+      "http://localhost:5500",
+      "http://127.0.0.1:5500"
+    ],
+    methods: ["GET", "POST"],
+  })
+);
+
 app.use(express.json());
 
 /* ===================== MONGODB ===================== */
@@ -26,7 +36,7 @@ const User = mongoose.model("User", UserSchema);
 
 /* ===================== ROUTES ===================== */
 
-// Health check (IMPORTANT)
+// Health check
 app.get("/", (req, res) => {
   res.json({ status: "Auth backend running" });
 });
