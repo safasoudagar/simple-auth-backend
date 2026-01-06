@@ -57,6 +57,7 @@ app.post("/register", async (req, res) => {
 
 // LOGIN
 app.post("/login", async (req, res) => {
+  console.log("LOGIN HIT:", req.body);
   const { email, password } = req.body;
 
   const user = await User.findOne({ email });
